@@ -2,82 +2,7 @@
 <html>
   <head>
     <base target="_top">
-
-    <style>
-
-      /* https://css-tricks.com/box-sizing/ */
-      html {
-        box-sizing: border-box;
-      }
-      *, *:before, *:after {
-        box-sizing: inherit;
-      }
-
-      body {
-        font-family: Helvetica, Arial, sans-serif;
-      }
-
-      ul {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      li {
-        margin: 1em 0;
-      }
-
-      label {
-        font-weight: bold;
-      }
-
-      input[type=text], input[type=password] {
-        display: block;
-        border: 1px solid #ccc;
-        font-size: 1em;
-        padding: 0.5em;
-        margin: 0.25em 0;
-        width: 100%;
-        outline: none;
-      }
-
-      input[type=text]:invalid, input[type=password]:invalid {
-        border-color: red;
-      }
-
-      input[type=text]:focus, input[type=password]:focus {
-        border-color: #3079ed;
-      }
-
-      button {
-        font-size: 1.25em;
-        border: 0;
-        padding: 0.5em 1em;
-        cursor: pointer;
-        color: white;
-        border-radius: 4px;
-      }
-
-      button.primary {
-        background-color: #3079ed;
-      }
-
-      button.loading {
-        opacity: 0.5;
-        cursor: default;
-      }
-
-      .sheet-id {
-        color: gray;
-        font-size: 0.8em;
-      }
-
-      .action-buttons {
-        display: flex;
-        justify-content: flex-end;
-      }
-
-    </style>
-
+    <?!= include('Stylesheet'); ?>
   </head>
   <body>
 
@@ -93,17 +18,28 @@
           <input id="path" name="path" type="text" value="<?!= path ?>" placeholder="path/to/folder" />
         </li>
 
-        <li>
-          <label for="aws-access-key-id">AWS access key ID</label>
-          <input id="aws-access-key-id" name="awsAccessKeyId" type="text" value="<?!= awsAccessKeyId ?>" placeholder="from AWS management console" required />
-        </li>
+        <? if (awsAccessKeyId) { ?>
+          
+        <? } else  { ?>
+          <li>
+            <label for="aws-access-key-id">AWS access key ID</label>
+            <input id="aws-access-key-id" name="awsAccessKeyId" type="password" value="<?!= awsAccessKeyId ?>" placeholder="from AWS management console" required />
+          </li>
+        <? } ?>
 
-        <li>
-          <label for="aws-secret-key">AWS secret key</label>
-          <input id="aws-secret-key" name="awsSecretKey" type="password" value="<?!= awsSecretKey ?>" placeholder="from AWS management console" required />
-        </li>
+         <? if (awsSecretKey) { ?>
+          
+        <? } else  { ?>
+          <li>
+            <label for="aws-secret-key">AWS secret key</label>
+            <input id="aws-secret-key" name="awsSecretKey" type="password" value="<?!= awsSecretKey ?>" placeholder="from AWS management console" required />
+          </li>
+        <? } ?>
 
-        <li>
+        
+
+        
+        <li class="file_format">
           <label for="file_format">File format</label>
             <ul>
               <li>
@@ -115,14 +51,14 @@
             </ul>
         </li>
 
-        <li class="sheet-id">
-          Sheet ID: <?!= sheetId ?>
-        </li>
       </ul>
 
       <div class="action-buttons">
+        <button type="submit" class="primary" onclick="google.script.run.configS3Creds()">Add S3 Credentials</button>
         <button type="submit" class="primary">Save</button>
       </div>
+
+      <p class="sheet-id"> Sheet ID: <?!= sheetId ?></p>
 
     </form>
 

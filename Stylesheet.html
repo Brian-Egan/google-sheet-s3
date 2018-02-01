@@ -1,0 +1,97 @@
+<style>
+
+    /* https://css-tricks.com/box-sizing/ */
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 1em 0;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type=text], input[type=password] {
+      display: block;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      padding: 0.5em;
+      margin: 0.25em 0;
+      width: 100%;
+      outline: none;
+    }
+
+    input[type=text]:invalid, input[type=password]:invalid {
+      border-color: red;
+    }
+
+    input[type=text]:focus, input[type=password]:focus {
+      border-color: #3079ed;
+    }
+
+    button {
+      font-size: 1.25em;
+      border: 0;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      color: white;
+      border-radius: 4px;
+    }
+
+    button.primary {
+      background-color: #3079ed;
+    }
+
+    button.loading {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    .sheet-id {
+      color: gray;
+      font-size: 0.8em;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    li.file_format {
+      /*background-color: #d7d7d7;*/
+      background-color: rgb(247, 247, 247);
+    }
+
+    .file_format label {
+      max-width: 30%;
+      display: inline-block;
+      width: 30%;
+      padding-left: 1%;
+    }
+
+    .file_format ul {
+      width: 65%;
+      margin: auto 2%;
+      display: inline-block;
+    }
+
+    .file_format ul li {
+      width: 46%;
+      display: inline-block;
+    }
+
+  </style>
